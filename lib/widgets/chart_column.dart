@@ -26,7 +26,7 @@ class ChartColumn extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Stack(
@@ -37,7 +37,7 @@ class ChartColumn extends StatelessWidget {
                       heightFactor: percentageTotal,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.only(
