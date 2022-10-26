@@ -35,118 +35,125 @@ class _AddTransactionState extends State<AddTransaction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 300,
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            margin: const EdgeInsets.only(
-              bottom: 4,
-            ),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Title',
-                icon: Icon(
-                  Icons.edit_note_rounded,
-                  size: 30,
-                ),
+      height: 280 + MediaQuery.of(context).viewInsets.bottom,
+      padding: EdgeInsets.only(
+        top: 20,
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: SingleChildScrollView(
+        // padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
               ),
-              style: const TextStyle(
-                fontSize: 18,
-                decoration: TextDecoration.none,
+              margin: const EdgeInsets.only(
+                bottom: 4,
               ),
-              controller: titleController,
-              onEditingComplete: editingCompleteCheck,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Amount',
-                icon: Icon(
-                  Icons.currency_rupee_rounded,
-                  size: 30,
-                ),
-              ),
-              style: const TextStyle(
-                fontSize: 18,
-                decoration: TextDecoration.none,
-              ),
-              keyboardType: TextInputType.number,
-              controller: amountController,
-              onEditingComplete: editingCompleteCheck,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 11,
-            ),
-            margin: const EdgeInsets.only(
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.calendar_today_rounded,
-                  size: 28,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 8,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Title',
+                  icon: Icon(
+                    Icons.edit_note_rounded,
+                    size: 30,
                   ),
-                  child: TextButton(
-                    onPressed: () {
-                      showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.parse("2022-01-01"),
-                        lastDate: DateTime.now().add(
-                          const Duration(
-                            days: 7,
+                ),
+                style: const TextStyle(
+                  fontSize: 18,
+                  decoration: TextDecoration.none,
+                ),
+                controller: titleController,
+                onEditingComplete: editingCompleteCheck,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+              ),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Amount',
+                  icon: Icon(
+                    Icons.currency_rupee_rounded,
+                    size: 30,
+                  ),
+                ),
+                style: const TextStyle(
+                  fontSize: 18,
+                  decoration: TextDecoration.none,
+                ),
+                keyboardType: TextInputType.number,
+                controller: amountController,
+                onEditingComplete: editingCompleteCheck,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 11,
+              ),
+              margin: const EdgeInsets.only(
+                top: 20,
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today_rounded,
+                    size: 28,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      left: 8,
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.parse("2022-01-01"),
+                          lastDate: DateTime.now().add(
+                            const Duration(
+                              days: 7,
+                            ),
                           ),
-                        ),
-                      ).then((value) {
-                        if (value == null) return;
-                        date = value;
-                        setState(() {
-                          currentDate = DateFormat.yMMMd('en_US').format(value);
+                        ).then((value) {
+                          if (value == null) return;
+                          date = value;
+                          setState(() {
+                            currentDate =
+                                DateFormat.yMMMd('en_US').format(value);
+                          });
                         });
-                      });
-                    },
-                    child: Text(
-                      currentDate == '' ? "Add Date" : currentDate,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      },
+                      child: Text(
+                        currentDate == '' ? "Add Date" : currentDate,
+                        style: const TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              top: 20,
-              right: 8,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: editingCompleteCheck,
-                  child: const Text('Add Transaction'),
-                ),
-              ],
-            ),
-          )
-        ],
+            Container(
+              margin: const EdgeInsets.only(
+                top: 20,
+                right: 8,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: editingCompleteCheck,
+                    child: const Text('Add Transaction'),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

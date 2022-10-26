@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
 
   void showAddTransaction(BuildContext ctx) {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: ctx,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
